@@ -1,0 +1,17 @@
+{
+  "name": "SupermarketList",
+  "displayName": "SupermarketList",
+  "expo": {
+    "name": "SupermarketList",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
