@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         marginTop: 16,
         borderColor: '#bbb',
         borderWidth: 1,
-        borderStyle: 'dashed', 
         borderRadius: 10,
         flexDirection: 'row',
     },

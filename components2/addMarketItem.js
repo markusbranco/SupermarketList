@@ -15,8 +15,22 @@ export default function AddMarketItem({addMarketItemHandler}) {
                 placeholder='New Item...'
                 onChangeText={changeHandler}
             />
-            <Button onPress={() => addMarketItemHandler(text)} title='Add Item' color='coral' />
+            <Button 
+                title='Add Item'
+                color='coral'
+                onPress={() => addMarketItemHandler(text)}/>
+
+            <TextInput
+                style={styles.input}
+                placeholder='New Item2...'
+                onChangeText={changeHandler}
+            />
+            <Button 
+                title='Add Item'
+                color='coral'
+                onPress={() => addMarketItemHandler(text)}/>
         </View>
+        
     )
 }
 
