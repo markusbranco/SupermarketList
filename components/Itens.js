@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, FlatList, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Button, FlatList, TouchableHighlight, TouchableOpacity } from 'react-native';
+import firebase from 'firebase';
 import {deleteItens, getitens} from '../actions';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -13,9 +14,12 @@ class Itens extends Component {
     }
 
     render() {
-        console.log('Itens.js', this.props.listOfItens)
+     
         return (
             <View style={styles.container}>
+                <TouchableOpacity stle={{padding:20}} onPress={() => firebase.auth().signOut()}>  
+                    <Text style={{color:'#1B9CFC'}}>Logout</Text>
+                </TouchableOpacity>
                 <FlatList style={styles.flat}
                             data={this.props.listOfItens}
                             keyExtractor={(item) => item.key}

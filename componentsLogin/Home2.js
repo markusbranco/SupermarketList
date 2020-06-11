@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
-//import Routes from './components/Routes';
-import Routes from './components/Routes';
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware } from 'redux'
-import ReduxThunk from 'redux-thunk';
-import reducers from './reducers'
-
+import { View, Text, StyleSheet } from 'react-native';
 import firebase from 'firebase'
-import LoginForm from './componentsLogin/LoginForm';
-import Articles from './componentsLogin/Articles';
-import Loading from './componentsLogin/Loading';
+import LoginForm from './LoginForm';
+import Articles from './Articles';
+import Loading from './Loading';
 
+//create component
+class Home extends Component {
 
-
-class App extends Component {
-    
     state={
-        loggedIn:true
+        loggedIn:null
     }
 
     componentDidMount() {
@@ -44,11 +36,12 @@ class App extends Component {
                 })
             }else {
                 this.setState({
-                    loggedIn: true
+                    loggedIn: false
                 })
             }
         })
 
+          
     }
 
     renderContents = () => {
@@ -57,34 +50,28 @@ class App extends Component {
                 return <LoginForm />
             
             case true:
-                return <Routes />
+                return <Articles />
 
                 default:
                     return <Loading />
         }
     }
 
-    render() {
-
-        const state = createStore(reducers,{},applyMiddleware(ReduxThunk))
-
+    render () {
         return (
-            <Provider store={state}>
+            <View style={styles.container}>
                 {this.renderContents()}
-            </Provider>
-            
-            
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-       /* flex: 1,
+        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',*/
+        alignItems: 'center',
     },
 });
 
-//Make this component available to the app
-export default App;
+export default Home;

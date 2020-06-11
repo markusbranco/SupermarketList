@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
-//import Routes from './components/Routes';
-import Routes from './components/Routes';
+import { View, Text, StyleSheet } from 'react-native';
+import firebase from 'firebase'
+import LoginForm from './LoginForm';
+import Articles from './Articles';
+import Loading from './Loading';
+import Routes from '../components/Routes';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk';
-import reducers from './reducers'
+import reducers from '../reducers'
 
-import firebase from 'firebase'
-import LoginForm from './componentsLogin/LoginForm';
-import Articles from './componentsLogin/Articles';
-import Loading from './componentsLogin/Loading';
+//create component
+class Home extends Component {
 
-
-
-class App extends Component {
-    
     state={
-        loggedIn:true
+        loggedIn:null
     }
 
     componentDidMount() {
@@ -44,47 +41,51 @@ class App extends Component {
                 })
             }else {
                 this.setState({
-                    loggedIn: true
+                    loggedIn: false
                 })
             }
         })
 
+          
     }
 
     renderContents = () => {
+        
+
         switch(this.state.loggedIn) {
             case false:
-                return <LoginForm />
+                return  <View style={styles.container}>
+                            <LoginForm />
+                        </View>
             
             case true:
                 return <Routes />
+                       
+                
 
                 default:
                     return <Loading />
         }
     }
 
-    render() {
-
+    render () {
         const state = createStore(reducers,{},applyMiddleware(ReduxThunk))
 
         return (
             <Provider store={state}>
                 {this.renderContents()}
+
             </Provider>
-            
-            
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-       /* flex: 1,
+        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',*/
+        alignItems: 'center',
     },
 });
 
-//Make this component available to the app
-export default App;
+export default Home;
