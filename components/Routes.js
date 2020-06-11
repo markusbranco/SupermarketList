@@ -11,12 +11,15 @@ const NavStack = createStackNavigator({
     Itens: {
         screen:Itens,
         navigationOptions:() => ({
-            headerTitle:"Food Items List"
+            headerTitle:"List Itens"
         })
     },
 
     EditItem: {
         screen:EditItem,
+        navigationOptions:() => ({
+            headerTitle:"Update Item"
+        })
         
     },
         
@@ -27,7 +30,10 @@ const BottomTab = createBottomTabNavigator({
         screen:NavStack
     },
     CreateItem:{
-        screen:CreateItem
+        screen:CreateItem,
+        navigationOptions:() => ({
+            headerTitle:"Add Item"
+        })
     },
 })
 

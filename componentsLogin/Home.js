@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import firebase from 'firebase'
 import LoginForm from './LoginForm';
-import Articles from './Articles';
 import Loading from './Loading';
 import Routes from '../components/Routes';
 import {Provider} from 'react-redux';

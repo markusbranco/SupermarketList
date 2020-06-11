@@ -12,9 +12,9 @@ export function getitens() {
     }
 }
 
-export function createNewItem(name) {
+export function createNewItem(name, price) {
     return(dispatch) => {
-        firebase.database().ref('/items').push({name})
+        firebase.database().ref('/items').push({name, price})
     }
 }
 
@@ -24,8 +24,8 @@ export function deleteItens(key) {
     }
 }
 
-export function editItem(name, key) {
+export function editItem(name, price, key) {
     return(dispatch) => {
-        firebase.database().ref(`/items`).child(key).update({name})
+        firebase.database().ref(`/items`).child(key).update({name, price})
     }
 }

@@ -28,6 +28,7 @@ class Itens extends Component {
                                 return (
                                     <View style={styles.viewItem}>
                                         <Text style={styles.textItem}>{item.name}</Text>
+                                        <Text style={styles.priceItem}>{item.price}</Text>
                                         <View style={styles.buttons}>
                                             <TouchableHighlight onPress={() => this.props.navigation.navigate('EditItem', {...item})}>
                                                 <View style={{marginRight:15}}> 
@@ -81,6 +82,10 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
     },
+    priceItem: {
+        color: '#fff',
+        fontSize: 15,
+    }
 });
 
 function mapStateToProps(state) {
